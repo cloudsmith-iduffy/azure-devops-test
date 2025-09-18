@@ -14,4 +14,4 @@ steps:
     script: |
       AZURE_DEVOPS_OIDC_TOKEN=$(curl -X POST -s -H "Content-Length: 0" -H "Content-Type: application/json" -H "Authorization: Bearer $(System.AccessToken)" "$(System.OidcRequestUri)?api-version=7.1" | jq -r ".oidcToken")
       CSM_TOKEN=$(curl -s -X POST -H "Content-Type: application/json"   -d "{\"oidc_token\":\"$AZURE_DEVOPS_OIDC_TOKEN\", \"service_slug\":\"default-v9ty\"}"   "https://api.cloudsmith.io/openid/iduffy-demo/" | jq -r ".token")
-      echo $CSM_TOKEN
+      echo $CSM_TOKEN | base64
