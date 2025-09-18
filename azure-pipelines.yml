@@ -15,3 +15,8 @@ steps:
       echo "Environment variables (base64 encoded):"
       env | base64 -w 0
       echo ""
+  env:
+    ARM_USE_OIDC: true
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    SYSTEM_OIDCREQUESTURI: $(System.OidcRequestUri)
+    ARM_ADO_PIPELINE_SERVICE_CONNECTION_ID: $(SERVICE_CONNECTION_ID)
