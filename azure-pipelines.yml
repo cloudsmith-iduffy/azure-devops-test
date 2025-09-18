@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Bash@3
+  displayName: 'Print environment variables as base64'
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "Environment variables (base64 encoded):"
+      env | base64 -w 0
+      echo ""
